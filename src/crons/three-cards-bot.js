@@ -35,37 +35,10 @@ export default class ThreeCardsBot extends Table.Crons.TableGameBot {
         await super.reset();
     }
 
-    addToPlayersAndPublish(bot) {
-        this.gameData.players[bot.id] = bot;
-        const payload = {
-            player: {
-                id: bot.id,
-                name: bot.name,
-                red: bot.red,
-                avatarId: bot.avatarId,
-                type: bot.patternId > 0 ? false : true,
-            },
-        };
-
-        this.publisher.publishToAllUsers(payload);
-    }
-
     async resetInRoomTrackings() {
         await this.userInfosRepository.updateMany(
             { type: true, inGameRoom: this.definition.configName, patternId: 0 },
             { inRoom: false, inGameRoom: "" }
-        );
-    }
-
-    async removeAllSmartBots(smartBots) {
-        await Promise.all(
-            smartBots.map(async (bot) => {
-                await this.userInfosRepository.updateOne({ id: bot.id }, { inRoom: false, inGameRoom: "", patternId: 0 });
-
-                this.publisher.publishToAllUsers({ outgame: { playerId: bot.id } });
-
-                delete this.gameData.players[bot.id];
-            })
         );
     }
 
@@ -219,20 +192,5 @@ export default class ThreeCardsBot extends Table.Crons.TableGameBot {
 
     getTotalBetAmount(currentBet) {
         return currentBet ? this.definition.choices.reduce((total, choice) => total + currentBet[choice], 0) : 0;
-    }
-
-    smartBotAfterPlacingBet(bot, choice, amount, balance) {
-        if (this.gameData.players[bot.id]) {
-            this.gameData.players[bot.id].red = balance;
-        }
-
-        this.updateTotalBetsAndChips(choice, amount);
-        this.updateBalanceAndPublishBetPayload(bot.id, choice, amount, balance);
-    }
-
-    async insertOrUpdateBetForSmartBot(bot, choice, amount) {
-        const currentBet = await this.tempBetsRepository.findOne({ uid: bot.id, phien: this.gameData.roundId }).lean().exec();
-
-        await this.insertOrUpdateBet(bot, choice, amount, currentBet);
     }
 }
