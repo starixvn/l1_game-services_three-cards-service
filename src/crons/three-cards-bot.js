@@ -51,7 +51,6 @@ export default class ThreeCardsBot extends Table.Crons.TableGameBot {
     }
 
     getBetChoice(bot) {
-        console.log(bot);
         const totalBotBet = this.getAllBetAmount();
 
         const betChoiceRatios = [
