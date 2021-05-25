@@ -15,24 +15,14 @@ export default class ThreeCardsBot extends Table.Crons.TableGameBot {
         super(definition, gameData, publisher, userInfosRepository, tempBetsRepository);
 
         this.betChoiceRatio = {
-            MainOpts: 90, //odd | even
-            SubOpts: 5, //white3 | red3
-            RareOpts: 1, //red4 | white4
-            EqualOpts: 4, //red2
+            MainOpts: 60,
+            SubOpts: 40,
         };
 
-        this.mainOpts = ["even", "odd"];
-        this.subOpts = ["white3", "red3"];
-        this.rareOpts = ["red4", "white4"];
-        this.equalOpts = ["red2"];
+        this.mainOpts = ["diamonds", "hearts", "spades", "clubs"];
+        this.subOpts = ["red", "black"];
 
-        this.smallTicketRatio = 70;
-        this.smallTickets = 0;
         this.resetAllBets();
-    }
-
-    async reset() {
-        await super.reset();
     }
 
     async resetInRoomTrackings() {
@@ -49,23 +39,19 @@ export default class ThreeCardsBot extends Table.Crons.TableGameBot {
 
     resetAllBets() {
         this.allBets = {
-            odd: 0,
-            even: 0,
-            white3: 0,
-            red2: 0,
-            red3: 0,
-            red4: 0,
-            white4: 0,
+            red: 0,
+            black: 0,
+            diamonds: 0,
+            hearts: 0,
+            spades: 0,
+            clubs: 0,
         };
 
         this.smallTickets = 0;
     }
 
-    async run() {
-        await super.run();
-    }
-
     getBetChoice(bot) {
+        console.log(bot);
         const totalBotBet = this.getAllBetAmount();
 
         const betChoiceRatios = [
@@ -76,14 +62,6 @@ export default class ThreeCardsBot extends Table.Crons.TableGameBot {
             {
                 group: this.subOpts,
                 underBetRatio: (this.getTotalAmountOnChoiceGroup(this.subOpts) * 100) / totalBotBet < this.betChoiceRatio.SubOpts,
-            },
-            {
-                group: this.rareOpts,
-                underBetRatio: (this.getTotalAmountOnChoiceGroup(this.rareOpts) * 100) / totalBotBet < this.betChoiceRatio.RareOpts,
-            },
-            {
-                group: this.equalOpts,
-                underBetRatio: (this.getTotalAmountOnChoiceGroup(this.equalOpts) * 100) / totalBotBet < this.betChoiceRatio.EqualOpts,
             },
         ];
 
@@ -101,50 +79,10 @@ export default class ThreeCardsBot extends Table.Crons.TableGameBot {
 
     getMaxBet(bot, choice) {
         const gameConfigs = this.gameData.gameConfigs;
-        const minBet = this.getMinBet();
-        const isSmallTicket = this.totalTickets === 0 ? true : (this.smallTickets * 100) / this.totalTickets < this.smallTicketRatio;
-        let maxBet = Math.min(gameConfigs.choices_maxbet[choice], gameConfigs.bot_maxbet);
+        const maxBetPerChoice = gameConfigs.choices_maxbet[choice];
+        const botMaxBet = gameConfigs.bot_maxbet;
 
-        const maxBetOfSmallTicket = Math.min(minBet * 50, maxBet);
-
-        if (this.rareOpts.includes(choice)) {
-            maxBet = Math.min(minBet * 10, gameConfigs.bot_maxbet * 0.2, gameConfigs.choices_maxbet[choice]);
-            const totalAmountOnRateOpts = this.getTotalAmountOfBotOnChoiceGroup(bot, this.rareOpts);
-
-            if (totalAmountOnRateOpts > 0) {
-                maxBet -= totalAmountOnRateOpts;
-            }
-        }
-
-        if (this.subOpts.includes(choice)) {
-            const totalBetOnSubOpt = this.getTotalAmountOnChoiceGroup(this.subOpts);
-
-            maxBet = isSmallTicket
-                ? Math.min(maxBetOfSmallTicket, gameConfigs.bot_maxbet * 0.2, gameConfigs.choices_maxbet[choice])
-                : Math.min(
-                      gameConfigs.bot_maxbet * 0.5,
-                      (this.getAllBetAmount() * this.betChoiceRatio.SubOpts) / 100 - totalBetOnSubOpt,
-                      gameConfigs.choices_maxbet[choice]
-                  );
-        }
-
-        if (this.equalOpts.includes(choice)) {
-            const totalBet = this.getTotalAmountOnChoiceGroup(this.equalOpts);
-
-            maxBet = isSmallTicket
-                ? Math.min(maxBetOfSmallTicket, gameConfigs.bot_maxbet * 0.2, gameConfigs.choices_maxbet[choice])
-                : Math.min(
-                      gameConfigs.bot_maxbet * 0.5,
-                      (this.getAllBetAmount() * this.betChoiceRatio.EqualOpts) / 100 - totalBet,
-                      gameConfigs.choices_maxbet[choice]
-                  );
-        }
-
-        if (this.mainOpts.includes(choice)) {
-            maxBet = isSmallTicket ? maxBetOfSmallTicket : maxBet;
-        }
-
-        return Math.max(maxBet, minBet);
+        return Math.min(maxBetPerChoice, botMaxBet);
     }
 
     getRandomChoiceFromGroup(group) {
@@ -172,16 +110,10 @@ export default class ThreeCardsBot extends Table.Crons.TableGameBot {
 
         return total;
     }
-
-    isSmallTicket(amount) {
-        return amount < this.getMinBet() * 50;
-    }
-
     updateBotInRoomData(bot, choice, amount, balance) {
         super.updateBotInRoomData(bot, choice, amount, balance);
 
         this.allBets[choice] = this.allBets[choice] ? this.allBets[choice] + amount : amount;
-        this.smallTickets += this.isSmallTicket(amount) ? 1 : 0;
     }
 
     convertAmountToChip(amount) {
