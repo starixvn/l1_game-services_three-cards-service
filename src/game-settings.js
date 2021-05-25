@@ -1,6 +1,6 @@
 export default {
     id: 35,
-    name: "threecards",
+    name: "ThreeCards",
     durations: {
         wholeRound: 37,
         placingBets: 25,
