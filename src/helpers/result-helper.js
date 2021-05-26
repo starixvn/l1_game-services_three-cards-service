@@ -11,8 +11,8 @@ export const generateResult = () => {
 
 export const getSettlementResult = (roundResult) => {
     return {
-        red: roundResult.filter((card) => card.suit === constants.cardSuit.diamonds || card.cardSuit === constants.cardSuit.hearts).length >= 2,
-        black: roundResult.filter((card) => card.suit === constants.cardSuit.clubs || card.cardSuit === constants.cardSuit.spades).length >= 2,
+        red: roundResult.filter((card) => card.suit === constants.cardSuit.diamonds || card.suit === constants.cardSuit.hearts).length >= 2,
+        black: roundResult.filter((card) => card.suit === constants.cardSuit.clubs || card.suit === constants.cardSuit.spades).length >= 2,
         diamonds: roundResult.some(card => card.suit === constants.cardSuit.diamonds),
         hearts: roundResult.some(card => card.suit === constants.cardSuit.hearts),
         spades: roundResult.some(card => card.suit === constants.cardSuit.spades),
