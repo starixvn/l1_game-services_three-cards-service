@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testExecutions version="1">
+  <file path="G:\Source\three-cards-service\src\helpers\__tests__\result-helper.test.js">
+    <testCase name="settlementResult tests should return correct settlement" duration="2"/>
+    <testCase name="settlementResult tests should return correct settlement" duration="1"/>
+    <testCase name="settlementResult tests should return correct settlement" duration="0"/>
+    <testCase name="settlementResult tests should return correct settlement" duration="1"/>
+  </file>
+</testExecutions>

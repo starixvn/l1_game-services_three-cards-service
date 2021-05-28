@@ -4,3 +4,5 @@
 .prettierrc
 .prettierignore
 **/.vscode
+**/coverage
+**/reports
