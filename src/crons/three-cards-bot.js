@@ -87,13 +87,6 @@ export default class ThreeCardsBot extends Table.Crons.TableGameBot {
         return total;
     }
 
-    getTotalAmountOfBotOnChoiceGroup(bot, choices) {
-        let total = 0;
-        choices.forEach((choice) => (total += bot.betOnChoices[choice]));
-
-        return total;
-    }
-
     getAllBetAmount() {
         let total = 0;
         this.definition.choices.forEach((choice) => (total += this.allBets[choice]));
