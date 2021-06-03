@@ -1,4 +1,4 @@
-import { getSettlementResult } from "../result-helper";
+import { getSettlementResult, generateResult } from "../result-helper";
 import constants from "../../constants";
 
 const { cardSuit } = constants;
@@ -26,4 +26,12 @@ describe("settlementResult tests", () => {
     it.each(testCases)("should return correct settlement", (result, settlementResult) => {
         expect(getSettlementResult(result)).toEqual(settlementResult);
     });
+});
+
+
+describe("generateResult tests", () => {
+    it("should return exactly 3 cards", () => {
+        const result = generateResult();
+        expect(result.length).toEqual(3);
+    })
 });

@@ -25,13 +25,6 @@ export default class ThreeCardsBot extends Table.Crons.TableGameBot {
         this.resetAllBets();
     }
 
-    async resetInRoomTrackings() {
-        await this.userInfosRepository.updateMany(
-            { type: true, inGameRoom: this.definition.configName, patternId: 0 },
-            { inRoom: false, inGameRoom: "" }
-        );
-    }
-
     resetAllBotData() {
         super.resetAllBotData();
         this.resetAllBets();
@@ -46,8 +39,6 @@ export default class ThreeCardsBot extends Table.Crons.TableGameBot {
             spades: 0,
             clubs: 0,
         };
-
-        this.smallTickets = 0;
     }
 
     getBetChoice(bot) {
@@ -119,9 +110,5 @@ export default class ThreeCardsBot extends Table.Crons.TableGameBot {
         const chipList = constants.chips.filter((chip) => amount % chip === 0);
 
         return chipList.length > 0 ? chipList[0] : this.getMinBet();
-    }
-
-    getTotalBetAmount(currentBet) {
-        return currentBet ? this.definition.choices.reduce((total, choice) => total + currentBet[choice], 0) : 0;
     }
 }
