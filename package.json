@@ -14,6 +14,11 @@
     "author": "",
     "license": "ISC",
     "type": "module",
+    "jestSonar": {
+        "reportPath": "reports",
+        "reportFile": "test-reporter.xml",
+        "indent": 4
+    },
     "dependencies": {
         "nodemon": "^2.0.4",
         "sc-game-base": "~1.21.2-beta.12"
