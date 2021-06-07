@@ -62,7 +62,7 @@ export default class ThreeCardsBot extends Table.Crons.TableGameBot {
                 ? this.getRandomChoiceFromGroup(underRatioGroups[0].group)
                 : this.getRandomChoiceFromGroup(this.mainOpts);
 
-        const previousUniqueChoices = bot.choices.filter((betChoice) => this.mainOpts.includes(betChoice));
+        const previousUniqueChoices = bot.choices.filter((betChoice) => this.subOpts.includes(betChoice));
 
         return previousUniqueChoices.length > 0 ? previousUniqueChoices[0] : choice;
     }
