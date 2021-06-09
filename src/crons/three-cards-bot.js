@@ -1,6 +1,7 @@
 import { helpers } from "sc-common";
 import { Table } from "sc-game-base";
 import constants from "../constants";
+import Chance from "chance";
 
 export default class ThreeCardsBot extends Table.Crons.TableGameBot {
     /**
@@ -23,6 +24,7 @@ export default class ThreeCardsBot extends Table.Crons.TableGameBot {
         this.subOpts = ["red", "black"];
 
         this.resetAllBets();
+        this.chance = new Chance();
     }
 
     resetAllBotData() {
@@ -76,7 +78,7 @@ export default class ThreeCardsBot extends Table.Crons.TableGameBot {
     }
 
     getRandomChoiceFromGroup(group) {
-        const randomIndex = (Math.random() * group.length) >> 0;
+        const randomIndex = this.chance.integer({ min: 0, max: group.length - 1 });
         return group[randomIndex];
     }
 
