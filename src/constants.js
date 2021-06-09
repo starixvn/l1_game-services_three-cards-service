@@ -6,5 +6,20 @@ export default {
         diamonds: 1,
         clubs: 2,
         spades: 3
+    },
+    cardRank: {
+        ace:"A",
+        king: "K",
+        queen: "Q",
+        jack: "J",
+        two: "2",
+        three: "3",
+        four: "4",
+        five: "5",
+        six: "6",
+        seven: "7",
+        eight: "8",
+        nine: "9",
+        ten: "10"
     }
 };
