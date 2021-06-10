@@ -2723,6 +2723,11 @@ binary-extensions@^2.0.0, binary-extensions@^2.2.0:
   resolved "http://npm.lumigame.com/binary-extensions/-/binary-extensions-2.2.0.tgz#75f502eeaf9ffde42fc98829645be4ea76bd9e2d"
   integrity sha512-jDctJ/IVQbZoJykoeHbhXpOlNBqGNcwXJKJog42E5HDPUwQTSdjCHdihjj0DlnheQ7blbT6dHOafNAiS8ooQKA==
 
+bintrees@1.0.1:
+  version "1.0.1"
+  resolved "http://npm.lumigame.com/bintrees/-/bintrees-1.0.1.tgz#0e655c9b9c2435eaab68bf4027226d2b55a34524"
+  integrity sha1-DmVcm5wkNeqraL9AJyJtK1WjRSQ=
+
 bl@^2.2.1:
   version "2.2.1"
   resolved "http://npm.lumigame.com/bl/-/bl-2.2.1.tgz#8c11a7b730655c5d56898cdc871224f40fd901d5"
@@ -4125,7 +4130,7 @@ expect@^27.0.1:
     jest-message-util "^27.0.1"
     jest-regex-util "^27.0.1"
 
-express@^4.17.1:
+express@^4.16.4, express@^4.17.1:
   version "4.17.1"
   resolved "http://npm.lumigame.com/express/-/express-4.17.1.tgz#4491fc38605cf51f8629d39c2b5d026f98a4c134"
   integrity sha512-mHJ9O79RqluphRrcw2X/GTh3k9tVv8YcoyY4Kkh4WDMUYKRZUq0h1o0w2rrrxBqM7VoeUVqgb27xlEMXTnYt4g==
@@ -8192,6 +8197,13 @@ process-nextick-args@~2.0.0:
   resolved "http://npm.lumigame.com/process-nextick-args/-/process-nextick-args-2.0.1.tgz#7820d9b16120cc55ca9ae7792680ae7dba6d7fe2"
   integrity sha512-3ouUOpQhtgrbOa17J7+uxOTpITYWaGP7/AhoR3+A+/1e9skrzelGi/dXzEYyvbxubEF6Wn2ypscTKiKJFFn1ag==
 
+prom-client@^11.2.1:
+  version "11.5.3"
+  resolved "http://npm.lumigame.com/prom-client/-/prom-client-11.5.3.tgz#5fedfce1083bac6c2b223738e966d0e1643756f8"
+  integrity sha512-iz22FmTbtkyL2vt0MdDFY+kWof+S9UB/NACxSn2aJcewtw+EERsen0urSkZ2WrHseNdydsvcxCTAnPcSMZZv4Q==
+  dependencies:
+    tdigest "^0.1.1"
+
 promise-all-reject-late@^1.0.0:
   version "1.0.1"
   resolved "http://npm.lumigame.com/promise-all-reject-late/-/promise-all-reject-late-1.0.1.tgz#f8ebf13483e5ca91ad809ccc2fcf25f26f8643c2"
@@ -8753,15 +8765,15 @@ sc-api-client@^1.3.0:
     axios "^0.19.2"
     openid-client "^3.15.9"
 
-sc-base-apis@1.11.3-beta.1:
-  version "1.11.3-beta.1"
-  resolved "http://npm.lumigame.com/sc-base-apis/-/sc-base-apis-1.11.3-beta.1.tgz#69f1a64a41ee9e96e160bcdf93d17e22136ed1aa"
-  integrity sha512-VDwQg3MXFZNcHRdT5fqlg1t401z8LWa3U6Y+5DhiqE2HrkzXJjV3UWiqnP7L8494TcJrFnOMzD/DftWqMM70ag==
+sc-base-apis@^1.12.0:
+  version "1.12.0"
+  resolved "http://npm.lumigame.com/sc-base-apis/-/sc-base-apis-1.12.0.tgz#343363cadbdd540a78eacfa98a902ea3c573ab1c"
+  integrity sha512-M6XbwlOErrpBggQZZKIilmHWbRjE9CeprZF16eGltutZy8WyhCD/PGYFUh5TKbTJqqlLv3eJMLdeklE+ngepMg==
   dependencies:
     moment "^2.27.0"
     sc-api-client "^1.3.0"
     sc-base-database "^1.8.2"
-    sc-common "^1.6.1-beta.1"
+    sc-common "^1.7.0"
 
 sc-base-database@^1.8.2:
   version "1.8.2"
@@ -8770,17 +8782,6 @@ sc-base-database@^1.8.2:
   dependencies:
     mongoose "^5.9.25"
     sc-common "^1.6.0"
-
-sc-common@1.6.1-beta.1, sc-common@^1.6.1-beta.1:
-  version "1.6.1-beta.1"
-  resolved "http://npm.lumigame.com/sc-common/-/sc-common-1.6.1-beta.1.tgz#aecda3129ab4f5335ce903a6856130fed82e5c41"
-  integrity sha512-rFTHAVZQBKnjILsSt8G1SJIS1EF0P2Espf1cWE1JiWsHBAUs63ka7K4X2OlJJ76w6MOVevfob6FUv7AZHJG7Sg==
-  dependencies:
-    "@sentry/node" "^5.19.1"
-    jsonwebtoken "^8.5.1"
-    jwks-rsa "^1.8.1"
-    mongoose-long "^0.3.0"
-    numeral "^2.0.6"
 
 sc-common@^1.6.0:
   version "1.6.0"
@@ -8793,10 +8794,21 @@ sc-common@^1.6.0:
     mongoose-long "^0.3.0"
     numeral "^2.0.6"
 
-sc-game-base@~1.21.2-beta.12:
-  version "1.21.2-beta.12"
-  resolved "http://npm.lumigame.com/sc-game-base/-/sc-game-base-1.21.2-beta.12.tgz#707d79ac96871cdcbacd3a8a606cfa4d269c6414"
-  integrity sha512-PWkhve/7Nx6VsztVXCj05R5g/WPNSaYODwRgBurXz2qkAXb1cb/jKDvR5NPuq3xmvN/ayMmFUrDqtnxwc/7f+g==
+sc-common@^1.7.0:
+  version "1.7.0"
+  resolved "http://npm.lumigame.com/sc-common/-/sc-common-1.7.0.tgz#8af3683ef7957b3a51153e1a85a6e7a8dbf88243"
+  integrity sha512-+bgvCtmo06YMkGfAruAht9oePO3R48Lzzncz2slGGSsPAzAjh7lMezjB4uOoH/aDR7dOGY2CwKpmAvfeFpkxqQ==
+  dependencies:
+    "@sentry/node" "^5.19.1"
+    jsonwebtoken "^8.5.1"
+    jwks-rsa "^1.8.1"
+    mongoose-long "^0.3.0"
+    numeral "^2.0.6"
+
+sc-game-base@^1.23.0:
+  version "1.23.0"
+  resolved "http://npm.lumigame.com/sc-game-base/-/sc-game-base-1.23.0.tgz#b6f16ce262e2fe39990c4392e5adb4980e7a5777"
+  integrity sha512-q/OWwYjCKN9x065KdVgRKAEiFixG/gVVHgLAfckDIcfbHVqt+a5aJ1k3ktCIQXkz28wdjUw/CTW7uUoEL/jt3g==
   dependencies:
     awilix "^4.3.1"
     axios "^0.20.0"
@@ -8810,10 +8822,11 @@ sc-game-base@~1.21.2-beta.12:
     mongoose "^5.9.25"
     morgan "^1.10.0"
     openid-client "^4.2.0"
-    sc-base-apis "1.11.3-beta.1"
+    sc-base-apis "^1.12.0"
     sc-base-database "^1.8.2"
-    sc-common "1.6.1-beta.1"
+    sc-common "^1.7.0"
     socket.io "^2.3.0"
+    socket.io-prometheus-metrics "^1.0.6"
 
 sc-semantic-release@^1.1.0:
   version "1.2.0"
@@ -9099,7 +9112,16 @@ socket.io-parser@~3.4.0:
     debug "~4.1.0"
     isarray "2.0.1"
 
-socket.io@^2.3.0:
+socket.io-prometheus-metrics@^1.0.6:
+  version "1.0.6"
+  resolved "http://npm.lumigame.com/socket.io-prometheus-metrics/-/socket.io-prometheus-metrics-1.0.6.tgz#59189d57daaa879708a76d6618cc0bbef87fc9a0"
+  integrity sha512-rG1XIWuFRysVE/VE2ikJcYbv1ZqcY5IZ5CJOoih2MMiVx7GujwvxF1olcpDlQ/iGGryCXC/FRoBAB00Qnzsntw==
+  dependencies:
+    express "^4.16.4"
+    prom-client "^11.2.1"
+    socket.io "^2.2.0"
+
+socket.io@^2.2.0, socket.io@^2.3.0:
   version "2.4.1"
   resolved "http://npm.lumigame.com/socket.io/-/socket.io-2.4.1.tgz#95ad861c9a52369d7f1a68acf0d4a1b16da451d2"
   integrity sha512-Si18v0mMXGAqLqCVpTxBa8MGqriHGQh8ccEOhmsmNS3thNCGBwO8WGrwMibANsWtQQ5NStdZwHqZR3naJVFc3w==
@@ -9472,6 +9494,13 @@ tar@^6.0.2, tar@^6.1.0:
     minizlib "^2.1.1"
     mkdirp "^1.0.3"
     yallist "^4.0.0"
+
+tdigest@^0.1.1:
+  version "0.1.1"
+  resolved "http://npm.lumigame.com/tdigest/-/tdigest-0.1.1.tgz#2e3cb2c39ea449e55d1e6cd91117accca4588021"
+  integrity sha1-Ljyyw56kSeVdHmzZEReszKRYgCE=
+  dependencies:
+    bintrees "1.0.1"
 
 temp-dir@^2.0.0:
   version "2.0.0"
