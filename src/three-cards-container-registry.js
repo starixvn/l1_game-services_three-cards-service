@@ -2,6 +2,7 @@ import awilix from "awilix";
 import { Table } from "sc-game-base";
 
 import { ThreeCardsBot  } from "./crons";
+import GameCron from "./crons/game-cron";
 import { ThreeCardsBets, ThreeCardsTmpBets, ThreeCardsRounds } from "./models";
 
 const { asClass, asValue } = awilix;
@@ -22,6 +23,7 @@ export default class ThreeCardsContainerRegistry extends Table.TableContainerReg
 
         this.container.register({
             bot: asClass(ThreeCardsBot).singleton(),
+            gameCron: asClass(GameCron).singleton().proxy(),
         });
     }
 }
