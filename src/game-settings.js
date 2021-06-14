@@ -2,7 +2,7 @@ export default {
     id: 35,
     name: "ThreeCards",
     durations: {
-        wholeRound: 37,
+        wholeRound: 39,
         placingBets: 30,
         lockingBet: 5,
     },
