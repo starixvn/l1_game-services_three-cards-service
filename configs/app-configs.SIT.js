@@ -1,9 +1,11 @@
 export default {
+    gameId: 2,
+    gameName: "xocxoc",
     hostingPort: 5000,
     apiSettings: {
         enabledApi: true,
-        apiUrl: "http://l1_game_api_sit:5000",
-        authUrl: "http://l1_auth_api_sit:5000",
+        apiUrl: "http://l2_game_api_sit:5000",
+        authUrl: "http://l2_auth_api_sit:5000",
         client: {
             id: "game-server",
             secret: "gameserver@20luminet&",
@@ -14,9 +16,9 @@ export default {
         enabledApiLogs: true,
     },
     mainServerApiSettings: {
-        url: "http://l1_game_server_sit:5000/api",
+        url: "http://l2_game_server_sit:5000/api",
         auth: {
-            url: "http://l1_auth_api_sit:5000",
+            url: "http://l2_auth_api_sit:5000",
             id: "game-services",
             secret: "gameservices@20luminet&",
         },
@@ -32,7 +34,7 @@ export default {
     },
     enabledLogs: true,
     database: {
-        url: "mongodb://lmn_backend:LmnBackend%40517@10.99.99.187:27301/?replicaSet=SabaSIT",
+        url: "mongodb://lmn_backend:LmnBackend%40517@10.99.99.187:37301/?replicaSet=SabaL2SIT",
         options: {
             dbName: "minigame",
             useNewUrlParser: true,
@@ -40,7 +42,7 @@ export default {
         },
     },
     sentry: {
-        sentryUrl: "http://52368c4019044019885440599c180bda@10.99.99.187:800/24",
+        sentryUrl: "http://8ac47fca6d3e4a41908896a64ef201ac@10.99.99.187:800/53",
         logIdentifier: "three-cards",
         env: "SIT",
     },
@@ -50,13 +52,12 @@ export default {
     adminSecretKey: "asWDEerfOIdgsdqRTFabvmgh",
     enableCorsWs: true,
     corsUrls: [
-        "http://localhost:7456",
-        "http://sit.sabagame.com",
-        "https://sit.sabagame.com",
-        "https://sit-admg.sabagame.com",
-        "http://sit-adm.sabagame.com",
-        "https://sit-adm.sabagame.com",
-        "http://sitm.sabagame.com",
-        "https://sitm.sabagame.com",
+        "http://sit.sabagame.net",
+        "https://sit.sabagame.net",
+        "https://sit-admg.sabagame.net",
+        "http://sit-adm.sabagame.net",
+        "https://sit-adm.sabagame.net",
+        "http://sitm.sabagame.net",
+        "https://sitm.sabagame.net",
     ],
 };

@@ -6,8 +6,8 @@ stages:
   - deploy
 
 variables:
-  DOCKER_COMPOSE_REPO_URL: git@git3.nexdev.net:ci/repos-ci/pentagon_l1_three_cards_service.git
-  PROJECT_NAME: l1-three-cards-service
+  DOCKER_COMPOSE_REPO_URL: git@git3.nexdev.net:ci/repos-ci/pentagon_l2_three_cards_service.git
+  PROJECT_NAME: l2-three-cards-service
 
 include:
   - project: "ci/common-ci"
@@ -28,27 +28,27 @@ include:
   - project: 'ci/common-ci'
     ref: rocketor
     file: '_teams/luminet/pentagon/deploy-docker-swarm-stack/index.gitlab-ci.yml'
-  - project: "ci/repos-ci/pentagon_l1_three_cards_service"
+  - project: "ci/repos-ci/pentagon_l2_three_cards_service"
     ref: master
     file: ".gitlab-ci/three_cards_service/build.gitlab-ci.yml"
-  - project: "ci/repos-ci/pentagon_l1_three_cards_service"
+  - project: "ci/repos-ci/pentagon_l2_three_cards_service"
     ref: master
     file: ".gitlab-ci/three_cards_service/deploy-vars.gitlab-ci.yml"
-  - project: "ci/repos-ci/pentagon_l1_three_cards_service"
+  - project: "ci/repos-ci/pentagon_l2_three_cards_service"
     ref: master
     file: ".gitlab-ci/three_cards_service/rules.gitlab-ci.yml"
-  - project: "ci/repos-ci/pentagon_l1_three_cards_service"
+  - project: "ci/repos-ci/pentagon_l2_three_cards_service"
     ref: master
     file: ".gitlab-ci/three_cards_service/deploy-local.gitlab-ci.yml"
-  - project: "ci/repos-ci/pentagon_l1_three_cards_service"
+  - project: "ci/repos-ci/pentagon_l2_three_cards_service"
     ref: master
     file: ".gitlab-ci/three_cards_service/deploy-sit.gitlab-ci.yml"
-  - project: "ci/repos-ci/pentagon_l1_three_cards_service"
+  - project: "ci/repos-ci/pentagon_l2_three_cards_service"
     ref: master
     file: ".gitlab-ci/three_cards_service/deploy-uat.gitlab-ci.yml"
-  - project: "ci/repos-ci/pentagon_l1_three_cards_service"
+  - project: "ci/repos-ci/pentagon_l2_three_cards_service"
     ref: master
     file: ".gitlab-ci/three_cards_service/deploy-prod.gitlab-ci.yml"
-  - project: "ci/repos-ci/pentagon_l1_three_cards_service"
+  - project: "ci/repos-ci/pentagon_l2_three_cards_service"
     ref: master
     file: ".gitlab-ci/three_cards_service/deploy-aws.gitlab-ci.yml"

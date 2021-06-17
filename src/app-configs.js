@@ -1,9 +1,9 @@
 export default {
-    hostingPort: 8082,
+    hostingPort: 8001,
     apiSettings: {
         enabledApi: true,
-        apiUrl: "http://api.lumigame.com",
-        authUrl: "http://auth.lumigame.com",
+        apiUrl: "http://l2-api.lumigame.com",
+        authUrl: "http://l2-auth.lumigame.com",
         client: {
             id: "game-server",
             secret: "gameserver@20luminet&",
@@ -31,6 +31,7 @@ export default {
     },
     enabledLogs: true,
     database: {
+        //url: "mongodb://lmn_backend:LmnBackend@10.10.50.13:37101/?replicaSet=L2Local",
         url: "mongodb://127.0.0.1:27017",
         options: {
             dbName: "minigame",
@@ -40,7 +41,7 @@ export default {
         },
     },
     sentry: {
-        sentryUrl: "https://13f39b8359404ed5aec23655e64ccf78@sentry.lumigame.com/2",
+        sentryUrl: "https://acb36eb835d948d68c1aad9873754d51@sentry.lumigame.com/27",
         logIdentifier: "three-cards",
         env: "LOCAL",
     },
@@ -49,11 +50,5 @@ export default {
     },
     adminSecretKey: "asWDEerfOIdgsdqRTFabvmgh",
     enableCorsWs: false,
-    corsUrls: [
-        "http://localhost:7456",
-        "http://10.5.10.14:7456",
-        "http://localhost:7000",
-        "http://games.lumigame.com",
-        "http://admin.lumigame.com",
-    ],
+    corsUrls: ["http://localhost:7456", "http://l2-games.lumigame.com", "http://l2-admin.lumigame.com"],
 };
