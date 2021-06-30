@@ -1,9 +1,11 @@
 export default {
+    gameId: 2,
+    gameName: "xocxoc",
     hostingPort: 5000,
     apiSettings: {
         enabledApi: true,
-        apiUrl: "http://l1_game_api_uat:5000",
-        authUrl: "http://l1_auth_api_uat:5000",
+        apiUrl: "http://l2_game_api_uat:5000",
+        authUrl: "http://l2_auth_api_uat:5000",
         client: {
             id: "game-server",
             secret: "gameserver@20luminet&",
@@ -14,9 +16,9 @@ export default {
         enabledApiLogs: true,
     },
     mainServerApiSettings: {
-        url: "http://l1_game_server_uat:5000/api",
+        url: "http://l2_game_server_uat:5000/api",
         auth: {
-            url: "http://l1_auth_api_uat:5000",
+            url: "http://l2_auth_api_uat:5000",
             id: "game-services",
             secret: "gameservices@20luminet&",
         },
@@ -32,7 +34,7 @@ export default {
     },
     enabledLogs: true,
     database: {
-        url: "mongodb://lmn_backend:LmnBackend%4022027@10.99.99.187:27201/?replicaSet=SabaUAT",
+        url: "mongodb://lmn_backend:LmnBackend%4022027@10.99.99.187:37201/?replicaSet=SabaL2UAT",
         options: {
             dbName: "minigame",
             useNewUrlParser: true,
@@ -41,7 +43,7 @@ export default {
         },
     },
     sentry: {
-        sentryUrl: "http://7ba626fc5eea40709545d4adf36975c6@10.99.99.187:800/29",
+        sentryUrl: "http://e320d02082904b04bbe727cf8cb203ba@10.99.99.187:800/54",
         logIdentifier: "three-cards",
         env: "UAT",
     },
@@ -51,11 +53,11 @@ export default {
     adminSecretKey: "asWDEerfOIdgsdqRTFabvmgh",
     enableCorsWs: true,
     corsUrls: [
-        "http://uat.sabagame.com",
-        "https://uat.sabagame.com",
-        "http://uat-adm.sabagame.com",
-        "https://uat-adm.sabagame.com",
-        "http://uatm.sabagame.com",
-        "https://uatm.sabagame.com",
+        "http://uat.sabagame.net",
+        "https://uat.sabagame.net",
+        "http://uat-adm.sabagame.net",
+        "https://uat-adm.sabagame.net",
+        "http://uatm.sabagame.net",
+        "https://uatm.sabagame.net",
     ],
 };
