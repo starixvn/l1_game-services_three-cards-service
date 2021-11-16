@@ -21,7 +21,7 @@
     },
     "dependencies": {
         "nodemon": "^2.0.4",
-        "sc-game-base": "2.0.1-beta.22"
+        "sc-game-base": "2.0.1-beta.24"
     },
     "devDependencies": {
         "@babel/core": "^7.14.3",
