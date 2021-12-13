@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const modelName = "threecards_phien";
+const modelName = 'threecards_phien';
 
 const settlementResultSchema = new mongoose.Schema(
     {
@@ -19,6 +19,7 @@ const Schema = new mongoose.Schema({
     result: { type: Array },
     settlementResult: settlementResultSchema,
     time: { type: Date, default: new Date() },
+    exchangeRateId: { type: Number, require: true },
 });
 
 export default mongoose.model(modelName, Schema);

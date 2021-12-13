@@ -10,9 +10,9 @@ const run = async () => {
     const definition = new Table.TableGameDefinition(gameSettings, generateResult, getSettlementResult);
     const gameData = new Table.TableGameData(gameSettings.durations.wholeRound);
     const container = new ThreeCardsContainerRegistry().register(appConfigs, definition, gameData);
-    const app = new Core.BaseGameApp(container);
-
+    const app = new Core.BaseGameApp('ThreeCards', appConfigs);
     await app.run();
+    await app.startGame(container);
 };
 
 run();
