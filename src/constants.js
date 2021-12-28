@@ -1,6 +1,6 @@
 export default {
     resetTotalBets: { red: 0, black: 0, diamonds: 0, hearts: 0, spades: 0, clubs: 0 },
-    chips: [20000, 5000, 1000, 500, 200, 100, 50, 20, 10],
+    chips: [20_000_000, 5_000_000, 1_000_000, 500_000, 200_000, 100_000, 50_000, 20_000, 10_000],
     cardSuit: {
         hearts: 0,
         diamonds: 1,
