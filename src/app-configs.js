@@ -1,59 +1,57 @@
 export default {
-    hostingPort: 8082,
-    apiSettings: {
-        enabledApi: true,
-        apiUrl: "http://api.lumigame.com",
-        authUrl: "http://auth.lumigame.com",
-        client: {
-            id: "game-server",
-            secret: "gameserver@20luminet&",
-        },
-        useAuthenticate: true,
-        requestTimeout: 10000,
-        placeBetTimeout: 4500,
-        enableApiLogs: true,
+  hostingPort: 8082,
+  apiSettings: {
+    enabledApi: true,
+    apiUrl: "http://api.lumigame.com",
+    authUrl: "http://auth.lumigame.com",
+    client: {
+      id: "game-server",
+      secret: "gameserver@20luminet&",
     },
-    mainServerApiSettings: {
-        url: "http://localhost:8080/api",
-        auth: {
-            url: "http://auth.lumigame.com",
-            id: "game-services",
-            secret: "gameservices@20luminet&",
-        },
-        requestTimeout: 10000,
-        useAuthenticate: true,
+    useAuthenticate: true,
+    requestTimeout: 10000,
+    placeBetTimeout: 4500,
+    enableApiLogs: true,
+  },
+  socketOptions: {
+    pingInterval: 60 * 1000,
+    pingTimeout: 60 * 1000,
+    transports: ["websocket"],
+    allowUpgrades: false,
+  },
+  enabledLogs: true,
+  database: {
+    url: "mongodb://127.0.0.1:27017",
+    options: {
+      dbName: "minigame",
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      auto_reconnect: true,
     },
-    socketOptions: {
-        pingInterval: 60 * 1000,
-        pingTimeout: 60 * 1000,
-        transports: ["websocket"],
-        allowUpgrades: false,
-    },
-    enabledLogs: true,
-    database: {
-        url: "mongodb://127.0.0.1:27017",
-        options: {
-            dbName: "minigame",
-            useNewUrlParser: true,
-            useUnifiedTopology: true,
-            auto_reconnect: true,
-        },
-    },
-    sentry: {
-        sentryUrl: "https://13f39b8359404ed5aec23655e64ccf78@sentry.lumigame.com/2",
-        logIdentifier: "three-cards",
-        env: "LOCAL",
-    },
-    authenticateSettings: {
-        audiences: ["api", "admin-api"],
-    },
-    adminSecretKey: "asWDEerfOIdgsdqRTFabvmgh",
-    enableCorsWs: false,
-    corsUrls: [
-        "http://localhost:7456",
-        "http://10.5.10.14:7456",
-        "http://localhost:7000",
-        "http://games.lumigame.com",
-        "http://admin.lumigame.com",
-    ],
+  },
+  sentry: {
+    sentryUrl: "https://13f39b8359404ed5aec23655e64ccf78@sentry.lumigame.com/2",
+    logIdentifier: "three-cards",
+    env: "LOCAL",
+  },
+  authenticateSettings: {
+    url: "http://auth.lumigame.com",
+    id: "game-services",
+    secret: "gameservices@20luminet&",
+    requestTimeout: 10000,
+    useAuthenticate: false,
+    audiences: ["api", "admin-api"],
+  },
+  userServiceSettings: {
+    url: "http://127.0.0.1:5000",
+  },
+  adminSecretKey: "asWDEerfOIdgsdqRTFabvmgh",
+  enableCorsWs: false,
+  corsUrls: [
+    "http://localhost:7456",
+    "http://10.5.10.14:7456",
+    "http://localhost:7000",
+    "http://games.lumigame.com",
+    "http://admin.lumigame.com",
+  ],
 };
