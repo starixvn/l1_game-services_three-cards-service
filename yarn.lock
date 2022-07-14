@@ -3514,6 +3514,13 @@ cssstyle@^2.3.0:
   dependencies:
     cssom "~0.3.6"
 
+d3-array@^3.2.0:
+  version "3.2.0"
+  resolved "http://npm.lumigame.com/d3-array/-/d3-array-3.2.0.tgz#15bf96cd9b7333e02eb8de8053d78962eafcff14"
+  integrity sha512-3yXFQo0oG3QCxbF06rMPFyGRMGJNS7NvsV1+2joOjbBE+9xvWQ8+GcMJAjRCzw06zQ3/arXeJgbPYcjUCuC+3g==
+  dependencies:
+    internmap "1 - 2"
+
 dargs@^7.0.0:
   version "7.0.0"
   resolved "http://npm.lumigame.com/dargs/-/dargs-7.0.0.tgz"
@@ -5013,6 +5020,11 @@ install@^0.13.0:
   version "0.13.0"
   resolved "http://npm.lumigame.com/install/-/install-0.13.0.tgz"
   integrity sha512-zDml/jzr2PKU9I8J/xyZBQn8rPCAY//UOYNmR01XwNwyfhEWObo2SWfSl1+0tm1u6PhxLwDnfsT/6jB7OUxqFA==
+
+"internmap@1 - 2":
+  version "2.0.3"
+  resolved "http://npm.lumigame.com/internmap/-/internmap-2.0.3.tgz#6685f23755e43c524e251d29cbc97248e3061009"
+  integrity sha512-5Hh7Y1wQbvY5ooGgPbDaL5iYLAPzMTUrjMulskHLH6wnv/A+1q5rgEaiuqEjB+oxGXIVZs1FF+R/KPN3ZSQYYg==
 
 into-stream@^6.0.0:
   version "6.0.0"
@@ -8272,6 +8284,11 @@ quick-lru@^5.1.1:
   resolved "http://npm.lumigame.com/quick-lru/-/quick-lru-5.1.1.tgz"
   integrity sha512-WuyALRjWPDGtt/wzJiadO5AXY+8hZ80hVpe6MyivgraREW751X3SbhRvG3eLKOYN+8VEvqLcf3wdnt44Z4S4SA==
 
+random-js@^2.1.0:
+  version "2.1.0"
+  resolved "http://npm.lumigame.com/random-js/-/random-js-2.1.0.tgz#0c03238b0a4f701f7a4c7303036ade3083d8ee14"
+  integrity sha512-CRUyWmnzmZBA7RZSVGq0xMqmgCyPPxbiKNLFA5ud7KenojVX2s7Gv+V7eB52beKTPGxWRnVZ7D/tCIgYJJ8vNQ==
+
 range-parser@~1.2.1:
   version "1.2.1"
   resolved "http://npm.lumigame.com/range-parser/-/range-parser-1.2.1.tgz"
@@ -8719,10 +8736,10 @@ sc-common@1.8.1:
     mongoose-long "^0.3.0"
     numeral "^2.0.6"
 
-sc-game-base@3.0.6-beta.4:
-  version "3.0.6-beta.4"
-  resolved "http://npm.lumigame.com/sc-game-base/-/sc-game-base-3.0.6-beta.4.tgz#7fcc753b6ac3ec8863930b6a9a04cffc2794be76"
-  integrity sha512-n0TseY55qSQGOMgI44HWRsfYnGu1VxZLhC/RJ2CnZVXq3jLz0YamNZjKNeETGoODBJA0ygZ9D2IKvlCiRrQ8xQ==
+sc-game-base@3.0.6-beta.5:
+  version "3.0.6-beta.5"
+  resolved "http://npm.lumigame.com/sc-game-base/-/sc-game-base-3.0.6-beta.5.tgz#087264f7740dbe55fb377e8921af87413606a781"
+  integrity sha512-SJF4YWhQJew1UZr4nAhNn/l33Pqy9oAIO/VF2ijAikIqENju++aCx4asuv61DyoN39YiIMLynpJmX4Ov5bORvw==
   dependencies:
     awilix "^4.3.1"
     axios "^0.20.0"
