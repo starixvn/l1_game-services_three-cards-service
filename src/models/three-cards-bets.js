@@ -19,7 +19,6 @@ const bet = {
   freeBet: { type: Boolean, default: false },
 
   playerId: { type: Number },
-  operatorId: { type: String, required: true },
   roundId: { type: Number, default: 0 },
   paid: { type: Boolean, default: false },
 };
@@ -30,6 +29,7 @@ const ThreeCardsBets = mongoose.model(
     ...bet,
     currency: { type: String, require: true },
     rate: { type: Number, require: true },
+    operatorId: { type: String, required: true },
   })
 );
 const ThreeCardsTmpBets = mongoose.model(
