@@ -21,7 +21,6 @@ const bet = {
   playerId: { type: Number },
   roundId: { type: Number, required: true },
   paid: { type: Boolean, default: false },
-  rate: { type: Number, required: true },
 };
 
 const ThreeCardsBets = mongoose.model(
@@ -29,6 +28,7 @@ const ThreeCardsBets = mongoose.model(
   new mongoose.Schema({
     ...bet,
     currency: { type: String, required: true },
+    rate: { type: Number, required: true },
     operatorId: { type: String, required: true },
   })
 );
