@@ -47,11 +47,6 @@ export default {
     url: "http://localhost:8004/api",
   },
   adminSecretKey: "asWDEer4yGdgsdqR4uqmKQZgh",
-  enableCorsWs: true,
-  corsUrls: [
-    "https://sc1-games.sportsfun.app",
-    "https://sc1-adm.sportsfun.app",
-  ],
   metrics: {
     enable: true,
     secretKey: "30d15293-c7de-4c77-9293-b85d6c5bfe1a",
