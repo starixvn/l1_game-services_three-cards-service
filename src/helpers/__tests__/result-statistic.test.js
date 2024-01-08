@@ -1,60 +1,56 @@
-import constants from "../../constants";
 import { generateResult, getSettlementResult } from "../result-helper";
 
 jest.setTimeout(80000);
-describe("Result statistic: 10000 rounds", () => {
-    it("statistic should have expected result", () => {
-        const totalRounds = 10000;
-        const streaks = {
-            red: {},
-            black: {},
-        };
-
-        const streakNumber = 4;
-        const longestStreak = 4;
-        let occurrences = 0;
-        let prev = "red";
-        const stats = {
-            streaks: { total: 0, red: 0, black: 0 },
-        };
-
-        const randomMode = 3;
-
-        for (let index = 0; index < totalRounds; index++) {
-            const result = generateResult(randomMode);
-            const settlement = getSettlementResult(result);
-
-            if (settlement[prev]) {
-                occurrences++;
+describe("result statistic: 100,000 rounds", () => {
+    const calculateStreaks = (streaks, settlementResult, continuity) => {
+        Object.keys(continuity).forEach((key) => {
+            if (settlementResult[key]) {
+                continuity[key]++;
             } else {
-                if (occurrences >= streakNumber) {
-                    stats.streaks.total++;
-                    stats.streaks[prev]++;
-
-                    if (occurrences >= longestStreak) {
-                        streaks[prev][occurrences] = streaks[prev][occurrences] ?? 0;
-                        streaks[prev][occurrences]++;
-                    }
+                if (continuity[key] >= 4) {
+                    streaks[key][continuity[key]] = streaks[key][continuity[key]] ?? 0;
+                    streaks[key][continuity[key]] += 1;
                 }
+                continuity[key] = 0;
+            }
+        });
+    };
 
-                prev = settlement.red ? "red" : "black";
-                occurrences = 1;
+    // arrange
+    const total = 100_000;
+    for (let index = 0; index < 3; index++) {
+        it(`should generate results statistically correct with mode ${index + 1}`, () => {
+            // arrange
+            const statisticResult = { red: 0, black: 0, diamonds: 0, hearts: 0, spades: 0, clubs: 0 };
+            const streaks = { red: {}, black: {}, diamonds: {}, hearts: {}, spades: {}, clubs: {} };
+            const continuity = { red: 0, black: 0, diamonds: 0, hearts: 0, spades: 0, clubs: 0 };
+
+            // act
+            for (let i = 0; i < total; i++) {
+                const settlementResult = getSettlementResult(generateResult(index + 1));
+                Object.keys(settlementResult).forEach((key) => {
+                    statisticResult[key] += +settlementResult[key];
+                });
+                calculateStreaks(streaks, settlementResult, continuity);
             }
 
-            Object.keys(settlement).reduce((choiceResults, choice) => {
-                stats[choice] = stats[choice] ?? { count: 0, ratio: 0 };
-                stats[choice].count += settlement[choice] ? 1 : 0;
-                stats[choice].ratio = stats[choice].count / totalRounds;
-            }, {});
-        }
-        console.log(`======== Run ${totalRounds} rounds ========`);
+            // assert
+            const resultPercentage = Object.keys(statisticResult).reduce((percentage, key) => {
+                percentage[key] = +parseFloat((statisticResult[key] / total) * 100).toFixed(2);
 
-        console.log(stats);
-        console.log(`Longest streaks (>=${longestStreak}): `);
-        console.log(streaks);
-        //Assert
-        Object.keys(constants.cardSuit).forEach((choice) => {
-            expect(stats[choice].ratio).toBeGreaterThanOrEqual(0.5);
+                return percentage;
+            }, {});
+            console.log(
+                `Mode:${index + 1}, countResult: ${JSON.stringify(statisticResult)}, percentageResult: ${JSON.stringify(resultPercentage)}`
+            );
+            console.log(`streak on mode ${index + 1}: ${JSON.stringify(streaks, null, 2)}`);
+
+            expect(resultPercentage.red).toBeGreaterThanOrEqual(49);
+            expect(resultPercentage.black).toBeGreaterThanOrEqual(49);
+            expect(resultPercentage.diamonds).toBeLessThan(60);
+            expect(resultPercentage.hearts).toBeLessThan(60);
+            expect(resultPercentage.spades).toBeLessThan(60);
+            expect(resultPercentage.clubs).toBeLessThan(60);
         });
-    });
+    }
 });
