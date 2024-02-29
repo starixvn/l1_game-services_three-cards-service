@@ -1,11 +1,11 @@
+import Chance from "chance";
+import { randomInt } from "crypto";
+import { shuffle as d3Shuffle } from "d3-array";
+import _ from "lodash";
+import Random from "random";
+import { MersenneTwister19937, Random as RandomJS } from "random-js";
 import cards from "../cards";
 import constants from "../constants";
-import Chance from "chance";
-import _ from "lodash";
-import { shuffle as d3Shuffle } from "d3-array";
-import { Random as RandomJS, MersenneTwister19937 } from "random-js";
-import Random from "random";
-import { randomInt } from "crypto";
 
 const chance = new Chance();
 

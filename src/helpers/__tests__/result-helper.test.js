@@ -1,5 +1,5 @@
-import { getSettlementResult, generateResult } from "../result-helper";
 import constants from "../../constants";
+import { generateResult, getSettlementResult } from "../result-helper";
 
 const { cardSuit } = constants;
 const chanceMock = { pickoneIndex: 0 };
@@ -15,6 +15,7 @@ jest.mock("chance", () => {
         return new orig.Chance().shuffle(arr);
       },
       pickone: (arr) => arr[chanceMock.pickoneIndex],
+      floating: (arr) =>new orig.Chance().floating(arr),
     };
   };
 });
