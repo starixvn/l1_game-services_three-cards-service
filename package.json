@@ -23,6 +23,7 @@
     "dependencies": {
         "d3-array": "^3.2.0",
         "lodash": "^4.17.19",
+        
         "nodemon": "^2.0.4",
         "random": "^3.0.6",
         "random-js": "^2.1.0",
@@ -30,7 +31,9 @@
     },
     "resolutions": {
         "sc-base-apis": "1.18.2",
-        "sc-base-database": "1.11.1"
+        "sc-base-database": "1.11.1",
+        "socket.io-parser": "4.0.5",
+        "mongoose": "5.13.20"
     },
     "devDependencies": {
         "@babel/core": "7.14.3",
